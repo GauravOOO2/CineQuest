@@ -1,10 +1,6 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { styled } from '@mui/system';
-import Paper from '@mui/material/Paper';
-import { colors } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import '../styles/style.css'
 
 
