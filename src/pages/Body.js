@@ -7,7 +7,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-
+import {MoviesData} from "../utils/CheckBoxData";
+import "../styles/style.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? 'transparent' : 'transparent',
@@ -21,32 +22,24 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Body = () => {
-
-  const [filterData, setFilterData] = useState([])
-
-  // console.log("display filterdata",filterData);
-  const updateFilterData = (data, label) => {
-    let temp = [{
-      country: '',
-    }, {
-      language: ''
-    }, {
-      genre: ''
-    }
-    ]
-    // console.log(data,label);
-    temp.forEach((d) => {
-      // console.log(d)
-      let K = Object.keys(d)[0]
-      // console.log(K);
-      if (K.includes(label)) {
-        d[K] = data;
-        // console.log(data)
-      }
-    })
-    setFilterData(temp)
+  const [filterData, setFilterData] = useState({});
+  const { Country, Language, Genre } = filterData;
+  const filteredMovies = MoviesData.filter(movie => {
+    // Check if the movie matches all filter criteria
+    return (
+      (!Country || movie.moviecountries.includes(Country)) &&
+      (!Language || movie.movielanguages.includes(Language)) &&
+      (!Genre || movie.moviegenres.includes(Genre))
+    );
+  });
+  // Function to update filterData state
+  const updateFilterData = (newValue, label) => {
+    setFilterData(prevState => ({
+      ...prevState,
+      [label]: newValue
+    }));
   }
-
+  console.log("filterData",filterData,filteredMovies);
   return (
     <div className='BodyContainer' >
       <div className=' CategoryCheckBoxDiv '  >
@@ -60,27 +53,24 @@ const Body = () => {
           <Item><CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueLanguages} label={"Language"} /></Item>
           <Item><CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueGenres} label={"Genre"} /></Item>
         </Stack>
-
-        {/* <CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueCountries} label={"Country"} />
-        <CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueLanguages} label={"Language"} />
-        <CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueGenres} label={"Genre"} /> */}
       </div>
 
       <div className='MovieCardsDiv' >
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
-        <MovieCardComponent />
+      {filteredMovies.length === 0 ? (
+        <div className='ErrorDiv'><p>Oops! No movies found.</p></div>
+      ) : (
+        filteredMovies.map((movie, index) => (
+          <MovieCardComponent
+            key={index}
+            imgSrc={movie.moviemainphotos[0]}
+            movieTitle={movie.movietitle}
+            movieCountry={Country && movie.moviecountries.includes(Country) ? Country : ''}
+            movieLanguage={Language && movie.movielanguages.includes(Language) ? Language : ''}
+            movieGenre={Genre && movie.moviegenres.includes(Genre) ? Genre : ''}
+          />
+        ))
+      )}
+        
       </div>
 
     </div>

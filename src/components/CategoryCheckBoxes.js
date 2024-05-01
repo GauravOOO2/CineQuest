@@ -30,21 +30,26 @@ const StyledTextField = styled(TextField)({
 
 
 export default function CategoryCheckBoxes(props) {
-  const { options, label, updateFilterData } = props
+  const { options, label , updateFilterData} = props
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState('');
+  const [filterData, setFilterData] = React.useState([])
 
-
-
+  // console.log("display filterdata",filterData);
+  
+// React.useEffect(()=>{
+//   updateFilterData(value, label)
+// },[value])
   return (
     <div className='CategoryCheckBoxesContainer' >
-      {/* <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
+       {/* <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
       <div>{`inputValue: '${inputValue}'`}</div>
-      <br /> */}
+      <br />  */}
       <Autocomplete
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+          updateFilterData(newValue, label)
         }}
         inputValue={inputValue}
         onInputChange={(event, newInputValue) => {

@@ -70,3 +70,8 @@ body {
 
 /* text-gray-400 overflow-hidden truncate */
 
+.ErrorDiv{
+    color: white;
+    margin: 15rem;
+    font-size: 2rem;
+}
