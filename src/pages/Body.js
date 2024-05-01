@@ -54,24 +54,34 @@ const Body = () => {
           <Item><CategoryCheckBoxes updateFilterData={updateFilterData} options={uniqueGenres} label={"Genre"} /></Item>
         </Stack>
       </div>
+       
+      <div className='MovieCardsDiv'>
+  {/* Check if there are no filtered movies */}
+  {filteredMovies.length === 0 ? (
+    // If no movies found, display an error message
+    <div className='ErrorDiv'><p>Oops! No movies found.</p></div>
+  ) : (
+    // If there are filtered movies, map through each movie
+    filteredMovies.map((movie, index) => (
+      // Render a MovieCardComponent for each movie
+      <MovieCardComponent
+        // Set a unique key for each MovieCardComponent
+        key={index}
+        // Set the source of the movie's main photo
+        imgSrc={movie.moviemainphotos[0]}
+        // Set the title of the movie
+        movieTitle={movie.movietitle}
+        // Set the country of the movie if it matches the provided Country filter, otherwise an empty string
+        movieCountry={Country && movie.moviecountries.includes(Country) ? Country : ''}
+        // Set the language of the movie if it matches the provided Language filter, otherwise an empty string
+        movieLanguage={Language && movie.movielanguages.includes(Language) ? Language : ''}
+        // Set the genre of the movie if it matches the provided Genre filter, otherwise an empty string
+        movieGenre={Genre && movie.moviegenres.includes(Genre) ? Genre : ''}
+      />
+    ))
+  )}
+</div>
 
-      <div className='MovieCardsDiv' >
-      {filteredMovies.length === 0 ? (
-        <div className='ErrorDiv'><p>Oops! No movies found.</p></div>
-      ) : (
-        filteredMovies.map((movie, index) => (
-          <MovieCardComponent
-            key={index}
-            imgSrc={movie.moviemainphotos[0]}
-            movieTitle={movie.movietitle}
-            movieCountry={Country && movie.moviecountries.includes(Country) ? Country : ''}
-            movieLanguage={Language && movie.movielanguages.includes(Language) ? Language : ''}
-            movieGenre={Genre && movie.moviegenres.includes(Genre) ? Genre : ''}
-          />
-        ))
-      )}
-        
-      </div>
 
     </div>
   )

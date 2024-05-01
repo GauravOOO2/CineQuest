@@ -11,12 +11,12 @@ body {
     display: flex;
     justify-content: center;
     border-radius: 0.5rem;
-    background: linear-gradient(to right, #a860d2, #1c67be ,#06a6bf);
+    /* background: linear-gradient(to right, #a860d2, #1c67be ,#06a6bf); */
 }
 
-/* flex justify-center  bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg  */
 
 .MovieCardsDiv {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -25,37 +25,34 @@ body {
 
 .MovieCardsContainer {
     /* background-color: gray; */
+    
     padding: 1rem;
     width: 11.5rem;  /*this controls the poster image size */
 
 }
 
-/* w-56  bg-gray-600 rounded-lg shadow-lg overflow-hidden */
 
 .imageClass {
     display: flex;
     border-radius: 0.5rem;
 }
 
-/* rounded-xl flex */
-.TextFieldDiv {
-    /* padding-top: 0.3rem; */
-}
 
-/* pt-1 flex flex-col h-full */
 
 .MovieTitleClass {
     color: white;
+    margin-top: 10px;
     font-size: 1.125rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-/* text-white text-lg font-semibold truncate */
+
 
 .MovieCategoryDiv {
     flex-grow: 1;
+    margin-top: -23px;
     overflow: hidden;
 }
 
@@ -68,10 +65,12 @@ body {
     white-space: nowrap;
 }
 
-/* text-gray-400 overflow-hidden truncate */
+
 
 .ErrorDiv{
     color: white;
     margin: 15rem;
     font-size: 2rem;
 }
+
+  
