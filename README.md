@@ -23,7 +23,7 @@ CineQuest is a website designed to streamline the movie selection process based 
 ## Requirements
 
 - Basic ReactJs knowledge
-- Basic HTML, SCSS knowledge
+- Basic HTML, CSS knowledge
 ## Run Locally
 
 Clone my Repo from GitHub
@@ -33,11 +33,13 @@ Install dependencies
 ```bash
   git clone https://github.com/GauravOOO2/Movies-Site-Assignment.git
 ```
-Change directory and run the application 
+Change the directory and run the application 
 
 ```bash
   cd Movies-Site-Assignment
 ```
+
+Install Dependencies 
 
 ```bash
  npm install
