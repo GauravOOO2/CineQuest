@@ -11,7 +11,7 @@ A Complete ReactJS application.
 
 ## Project Description
 
-CineQuest is a website designed to streamline the movie selection process based on user preferences inputted through three text fields: Country, Genre, and Language. Upon submission, the website suggests movies available in the JSON data that match the user's criteria. Utilizing the .map method, I dynamically filtered and rendered the matching movie data on the frontend. To enhance user experience, I integrated unaliased MUI for rendering dropdown fields, ensuring a smoother, faster, and lighter system operation. Additionally, I prioritized responsiveness across all screen sizes by implementing custom styling directly in the SX, ensuring adaptability of fields and cards. The overall design aims to provide users with a visually appealing and pleasant browsing experience.
+CineQuest is a website designed to streamline the movie selection process based on user preferences inputted through three text fields: Country, Genre, and Language. Upon submission, the website suggests movies available in the JSON data that match the user's criteria. Utilizing the .map method, I dynamically filtered and rendered the matching movie data on the front end. To enhance user experience, I integrated unaliased MUI for rendering dropdown fields, ensuring a smoother, faster, and lighter system operation. Additionally, I prioritized responsiveness across all screen sizes by implementing custom styling directly in the SX, ensuring adaptability of fields and cards. The overall design aims to provide users with a visually appealing and pleasant browsing experience.
 
 
 ## What I used
@@ -45,7 +45,7 @@ Install Dependencies
  npm install
 ```
 
-Go to the project directory and Start the server
+Start the server
 
 ```bash
   npm run start
